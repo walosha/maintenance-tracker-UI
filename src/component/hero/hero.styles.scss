@@ -1,0 +1,14 @@
+.hero {
+  padding: 4rem 7rem;
+  margin-top: 7rem;
+
+  &__header {
+    display: inline-block;
+    width: 100%;
+  }
+
+  &__carousel {
+    display: inline-block;
+    width: 100%;
+  }
+}

@@ -1,0 +1,42 @@
+.header {
+  padding: 2rem 4rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0.4rem 0.5rem 2rem #a1887f;
+  &:hover {
+    box-shadow: 0.4rem 0.3rem 1rem #726a68;
+  }
+
+  &__logo-box {
+    display: inline-block;
+    width: 7rem;
+
+    &--logo {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+.nav-bar {
+  list-style: none;
+  float: right;
+
+  &__item {
+    display: inline-block;
+    padding: 1.1rem 3.4rem;
+    font-size: 110%;
+    font-weight: 700;
+    border-radius: 0.7rem;
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ba68c8;
+      color: #fff;
+    }
+  }
+}
