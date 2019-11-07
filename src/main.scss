@@ -18,6 +18,8 @@ html {
   box-sizing: border-box;
 }
 
+//TYPOGRAPHY
+
 .heading-primary {
   font-size: 3.6rem;
   font-weight: 700;
@@ -28,7 +30,7 @@ html {
 }
 
 .paragraph-primary {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #000;
   padding: 2rem 3rem;
@@ -36,13 +38,38 @@ html {
 }
 
 .heading-secondary {
-  font-size: 2.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #ba68c8;
-  padding: 2rem 3rem;
+  padding: 1rem 2rem;
   text-transform: uppercase;
-  box-shadow: 0.4rem 0.5rem 2rem #a1887f;
-  display: inline-block;
+}
+
+.paragraph-secondary {
+  font-size: 1.1rem;
+  font-weight: 200;
+  color: #000;
+  padding: 0.3rem 1rem;
+}
+
+.heading-tertiary {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #757575;
+  padding: 1rem 1.5rem;
+  text-transform: uppercase;
+}
+
+// UTILITY CLASSES
+
+.u-mb-small {
+  margin-bottom: 2rem;
+}
+.u-mb-mini {
+  margin-bottom: 4rem;
+}
+.u-mb-big {
+  margin-bottom: 6rem;
 }
 
 //GRID

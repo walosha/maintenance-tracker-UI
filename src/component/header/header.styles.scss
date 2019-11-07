@@ -1,9 +1,9 @@
 .header {
   padding: 4rem 2rem;
   position: relative;
-  box-shadow: 0.4rem 0.5rem 2rem #a1887f;
+  box-shadow: 0.4rem 0.5rem 2rem rgba(0, 0, 0, 0.342);
   &:hover {
-    box-shadow: 0.4rem 0.3rem 1rem #726a68;
+    box-shadow: 0.4rem 0.3rem 1rem rgba(0, 0, 0, 0.376);
   }
 
   &__logo-box {
