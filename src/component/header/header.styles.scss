@@ -1,10 +1,6 @@
 .header {
-  padding: 2rem 4rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: #fff;
+  padding: 4rem 2rem;
+  position: relative;
   box-shadow: 0.4rem 0.5rem 2rem #a1887f;
   &:hover {
     box-shadow: 0.4rem 0.3rem 1rem #726a68;
@@ -28,7 +24,7 @@
   &__item {
     display: inline-block;
     padding: 1.1rem 3.4rem;
-    font-size: 110%;
+    font-size: 1.6rem;
     font-weight: 700;
     border-radius: 0.7rem;
     color: inherit;
@@ -39,4 +35,8 @@
       color: #fff;
     }
   }
+}
+
+.u-center-text {
+  text-align: center;
 }
