@@ -23,7 +23,7 @@
 
   &__item {
     display: inline-block;
-    padding: 1.1rem 3.4rem;
+    padding: 0.7rem 3.4rem;
     font-size: 1.6rem;
     font-weight: 700;
     border-radius: 0.7rem;
@@ -31,8 +31,8 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #ba68c8;
-      color: #fff;
+      border: 0.2rem solid #ba68c8;
+      color: #757575;
     }
   }
 }
