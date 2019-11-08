@@ -5,7 +5,7 @@ import Client from "../../assets/client-1.jpg";
 
 const Testimony = () => {
   return (
-    <div className="testimony u-center-text">
+    <div className="testimony">
       <div className="testimony-header  u-mb-big">
         <h2 className="heading-secondary">
           Here is what our Customers have to say!

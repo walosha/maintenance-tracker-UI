@@ -1,21 +1,29 @@
 import React from "react";
-import Logo from "../../assets/logo.png";
+import {
+  HeaderStyles,
+  LogoBox,
+  Logo,
+  NavBar,
+  NavItem,
+  StyledSignUp
+} from "./header.styles";
+import logo from "../../assets/logo.png";
 
-import "./header.styles.scss";
+import "./header.styles.js";
 
-const Header = () => {
+const Header = props => {
   return (
-    <header className="header">
-      <div className="header__logo-box">
-        <img className="header__logo-box--logo" src={Logo} alt="" />
-      </div>
-      <ul className="nav-bar">
-        <li className="nav-bar__item">Contact us</li>
-        <li className="nav-bar__item"> Terms </li>
-        <li className="nav-bar__item">Sign In</li>
-        <li className="nav-bar__item">Sign Up</li>
-      </ul>
-    </header>
+    <HeaderStyles>
+      <LogoBox to="/">
+        <Logo src={logo} alt="" />
+      </LogoBox>
+      <NavBar>
+        <NavItem to="/contactus">Contact us</NavItem>
+        <NavItem to="/term">Terms</NavItem>
+        <NavItem to="/signin">Sign In</NavItem>
+        <StyledSignUp to="/signUp"> Sign Up</StyledSignUp>
+      </NavBar>
+    </HeaderStyles>
   );
 };
 
