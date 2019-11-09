@@ -4,7 +4,7 @@ import { Formik, ErrorMessage } from "formik";
 
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
 
-const SignUp = () => (
+const SignUp = ({ history }) => (
   <SignInStyles>
     <h2 className="heading-primary u-center-text">SIGN UP NOW</h2>
     <Formik
@@ -26,13 +26,17 @@ const SignUp = () => (
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        axios
-          .post(
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          const res = await axios.post(
             "https://maintenancetrackerapp.herokuapp.com/api/v1/users/signup",
             values
-          )
-          .then(res => console.log(res));
+          );
+          history.push("/myaccount");
+          console.log(res.data);
+        } catch (error) {
+          alert("error:", error);
+        }
       }}
     >
       {({ isSubmitting }) => (
@@ -62,7 +66,7 @@ const SignUp = () => (
           />
           <ErrorMessage name="password" component="div" />
           <StyledField
-            type="passwordConfirm"
+            type="password"
             name="passwordConfirm"
             placeholder="Repeat password"
           />
