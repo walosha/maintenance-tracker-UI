@@ -11,4 +11,4 @@ const signInReducer = (state = INITIAL_STATE, action) => {
   return state;
 };
 
-export const reducer = combineReducers({ data: signInReducer });
+export const rootReducer = combineReducers({ data: signInReducer });
