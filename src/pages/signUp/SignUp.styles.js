@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Field, Form } from "formik";
-import background from "../../assets/background.png";
+import background from "../../assets/background2.jpg";
 
 export const SignInStyles = styled.div`
   background-image: url(${background});

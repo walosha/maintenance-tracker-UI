@@ -7,11 +7,11 @@ import Footer from "../../component/footer/Footer.components";
 import "./homepage.styles.scss";
 
 const Homepage = () => (
-  <div className="">
+  <main>
     <Hero />
     <Testimony />
     <Footer />
-  </div>
+  </main>
 );
 
 export default Homepage;

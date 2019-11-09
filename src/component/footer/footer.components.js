@@ -4,9 +4,9 @@ import "./footer.styles.scss";
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <section className="footer">
       <div className="footer-box"></div>
-    </div>
+    </section>
   );
 };
 
