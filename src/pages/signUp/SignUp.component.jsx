@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { auth } from "../../redux/actions";
 
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
 
-const SignUp = ({ auth, user }) => {
+const SignUp = ({ user, auth }) => {
   console.log(user);
+
   return (
     <SignInStyles>
       <h2 className="heading-primary u-center-text">SIGN UP NOW</h2>
@@ -66,7 +67,7 @@ const SignUp = ({ auth, user }) => {
             />
             <ErrorMessage name="passwordConfirm" component="div" />
             <Button type="submit" disabled={isSubmitting}>
-              Submit
+              Register
             </Button>
           </StyledForm>
         )}
@@ -75,7 +76,7 @@ const SignUp = ({ auth, user }) => {
   );
 };
 
-const mapStateToProps = ({ signInReducer: { user } }) => ({ user });
+const mapStateToProps = ({ data: { user } }) => ({ user });
 export default connect(
   mapStateToProps,
   { auth }
