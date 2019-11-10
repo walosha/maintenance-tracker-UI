@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   HeaderStyles,
   LogoBox,
@@ -11,20 +12,38 @@ import logo from "../../assets/logo.png";
 
 import "./header.styles.js";
 
-const Header = props => {
+const Header = ({ user }) => {
   return (
     <HeaderStyles>
       <LogoBox to="/">
         <Logo src={logo} alt="" />
       </LogoBox>
       <NavBar>
-        <NavItem to="/contactus">Contact us</NavItem>
-        <NavItem to="/term">Terms</NavItem>
-        <NavItem to="/signin">Sign In</NavItem>
-        <StyledSignUp to="/signUp"> Sign Up</StyledSignUp>
+        {user._id ? (
+          <NavItem to="/requests">Request</NavItem>
+        ) : (
+          <NavItem to="/signin">Contact Us</NavItem>
+        )}
+        {user._id ? (
+          <NavItem to="/signin"> Edit Account</NavItem>
+        ) : (
+          <NavItem to="/signin">Team</NavItem>
+        )}
+        {user._id ? (
+          <NavItem to="/">Sign Out</NavItem>
+        ) : (
+          <NavItem to="/signin">Sign in</NavItem>
+        )}
+        {user._id ? (
+          <NavItem to="/signin"> WELCOME {user.name.toUpperCase()} </NavItem>
+        ) : (
+          <StyledSignUp to="/signup">Sign Up</StyledSignUp>
+        )}
       </NavBar>
     </HeaderStyles>
   );
 };
 
-export default Header;
+const mapStateToProps = ({ data: { user } }) => ({ user });
+
+export default connect(mapStateToProps)(Header);

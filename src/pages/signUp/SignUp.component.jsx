@@ -5,8 +5,8 @@ import { auth } from "../../redux/actions";
 
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
 
-const SignUp = ({ user, auth }) => {
-  console.log(user);
+const SignUp = ({ user, auth, history }) => {
+  console.log(history);
 
   return (
     <SignInStyles>
