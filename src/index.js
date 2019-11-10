@@ -10,12 +10,12 @@ import App from "./App";
 import "./main.scss";
 
 ReactDOM.render(
-  <Provider store={store.store}>
-    <Router>
+  <Router>
+    <Provider store={store.store}>
       <PersistGate loading={null} persistor={store.persistor}>
         <App />
       </PersistGate>
-    </Router>
-  </Provider>,
+    </Provider>
+  </Router>,
   document.getElementById("root")
 );

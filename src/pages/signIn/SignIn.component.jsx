@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
-
+import { connect } from "react-redux";
+import { signin } from "../../redux/actions";
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignIn.styles";
 
-const SignIn = () => (
+const SignIn = ({ signin }) => (
   <SignInStyles>
     <h2 className="heading-primary u-center-text">SIGN IN</h2>
     <Formik
@@ -19,10 +20,9 @@ const SignIn = () => (
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-        }, 400);
+      onSubmit={async (values, { setSubmitting }) => {
+        const res = await signin(values);
+        console.log("sign compo", res);
       }}
     >
       {({ isSubmitting }) => (
@@ -49,4 +49,7 @@ const SignIn = () => (
   </SignInStyles>
 );
 
-export default SignIn;
+export default connect(
+  null,
+  { signin }
+)(SignIn);

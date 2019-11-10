@@ -8,11 +8,12 @@ import {
   NavItem,
   StyledSignUp
 } from "./header.styles";
+import { signout } from "../../redux/actions";
 import logo from "../../assets/logo.png";
 
 import "./header.styles.js";
 
-const Header = ({ user }) => {
+const Header = ({ user, signout }) => {
   return (
     <HeaderStyles>
       <LogoBox to="/">
@@ -30,12 +31,17 @@ const Header = ({ user }) => {
           <NavItem to="/signin">Team</NavItem>
         )}
         {user._id ? (
-          <NavItem to="/">Sign Out</NavItem>
+          <NavItem onClick={signout} to="/">
+            Sign Out
+          </NavItem>
         ) : (
           <NavItem to="/signin">Sign in</NavItem>
         )}
         {user._id ? (
-          <NavItem to="/signin"> WELCOME {user.name.toUpperCase()} </NavItem>
+          <NavItem to="/signin">
+            {" "}
+            WELCOME {user.name.toUpperCase().split(" ")[0]}{" "}
+          </NavItem>
         ) : (
           <StyledSignUp to="/signup">Sign Up</StyledSignUp>
         )}
@@ -46,4 +52,7 @@ const Header = ({ user }) => {
 
 const mapStateToProps = ({ data: { user } }) => ({ user });
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  { signout }
+)(Header);

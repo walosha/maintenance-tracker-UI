@@ -1,13 +1,11 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
-import { auth } from "../../redux/actions";
+import { signup } from "../../redux/actions";
 
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
 
-const SignUp = ({ user, auth, history }) => {
-  console.log(history);
-
+const SignUp = ({ signup }) => {
   return (
     <SignInStyles>
       <h2 className="heading-primary u-center-text">SIGN UP NOW</h2>
@@ -31,7 +29,7 @@ const SignUp = ({ user, auth, history }) => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
-          await auth(values);
+          await signup(values);
         }}
       >
         {({ isSubmitting }) => (
@@ -79,5 +77,5 @@ const SignUp = ({ user, auth, history }) => {
 const mapStateToProps = ({ data: { user } }) => ({ user });
 export default connect(
   mapStateToProps,
-  { auth }
+  { signup }
 )(SignUp);
