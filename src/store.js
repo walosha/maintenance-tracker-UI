@@ -15,7 +15,12 @@ const persistConfig = {
 axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
   "jwt"
 )}`;
-const middlewares = [thunk, logger];
+const middlewares = [thunk];
+
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 let store = createStore(persistedReducer, applyMiddleware(...middlewares));
