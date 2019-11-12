@@ -20,25 +20,25 @@ const Header = ({ user, signout }) => {
         <Logo src={logo} alt="" />
       </LogoBox>
       <NavBar>
-        {user._id ? (
+        {Object.keys(user).length ? (
           <NavItem to="/requests">Request</NavItem>
         ) : (
           <NavItem to="/signin">Contact Us</NavItem>
         )}
-        {user._id ? (
-          <NavItem to="/signin"> Edit Account</NavItem>
+        {Object.keys(user).length ? (
+          <NavItem to="/news"> News </NavItem>
         ) : (
           <NavItem to="/signin">Team</NavItem>
         )}
-        {user._id ? (
+        {Object.keys(user).length ? (
           <NavItem onClick={signout} to="/">
             Sign Out
           </NavItem>
         ) : (
           <NavItem to="/signin">Sign in</NavItem>
         )}
-        {user._id ? (
-          <NavItem to="/signin">
+        {Object.keys(user).length ? (
+          <NavItem to={`/${user.name}`}>
             {" "}
             WELCOME {user.name.toUpperCase().split(" ")[0]}{" "}
           </NavItem>

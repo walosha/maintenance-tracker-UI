@@ -1,7 +1,7 @@
 import React from "react";
 
 const Request = () => {
-  return <div>hello</div>;
+  return <div> This is a Single Reqest component</div>;
 };
 
 export default Request;

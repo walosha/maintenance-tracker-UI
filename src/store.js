@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
+import axios from "axios";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
@@ -11,6 +12,9 @@ const persistConfig = {
   storage
 };
 
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
+  "jwt"
+)}`;
 const middlewares = [thunk, logger];
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

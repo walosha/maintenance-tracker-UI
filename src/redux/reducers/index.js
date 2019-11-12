@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { SIGN_IN, SIGN_UP, SIGN_OUT } from "../types/index";
+import { SIGN_IN, SIGN_UP, SIGN_OUT, GET_ME } from "../types/index";
 
 const INITIAL_STATE = {
   user: {}
@@ -11,6 +11,8 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
     case SIGN_IN:
       return { ...state, user: action.payload };
     case SIGN_OUT:
+      return { ...state, user: action.payload };
+    case GET_ME:
       return { ...state, user: action.payload };
     default:
       return state;

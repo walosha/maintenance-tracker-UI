@@ -1,11 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+import { UserPanel } from "./MyAccount.styles";
+import { getMe } from "../../redux/actions";
 
-const MyAccount = () => {
-  return (
-    <div>
-      <h1> THIS IS MY ACCOUNT My !!!!</h1>
-    </div>
-  );
-};
+import { UserName, SecParagrapgh } from "./MyAccount.styles";
 
-export default MyAccount;
+const MyAccount = ({ user, getMe }) => (
+  <UserPanel>
+    <UserName> NAME: {user.name}</UserName>
+    {Object.keys(user).map((bio, idx) => {
+      return bio !== "name" ? (
+        <>
+          <SecParagrapgh key={idx}>
+            {bio} : {user[bio]}
+          </SecParagrapgh>
+        </>
+      ) : null;
+    })}
+  </UserPanel>
+);
+
+const mapStateToProps = ({ data: { user } }) => ({ user });
+
+export default connect(
+  mapStateToProps,
+  { getMe }
+)(MyAccount);

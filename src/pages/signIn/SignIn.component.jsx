@@ -20,9 +20,8 @@ const SignIn = ({ signin }) => (
         }
         return errors;
       }}
-      onSubmit={async (values, { setSubmitting }) => {
-        const res = await signin(values);
-        console.log("sign compo", res);
+      onSubmit={(values, { setSubmitting }) => {
+        signin(values);
       }}
     >
       {({ isSubmitting }) => (
