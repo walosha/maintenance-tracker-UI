@@ -1,4 +1,4 @@
-import { maintenancetrackerapp } from "../../api/maintenancetrackerapp";
+import maintenancetrackerapp from "../../api/maintenancetrackerapp";
 import { SIGN_IN, SIGN_UP, SIGN_OUT, GET_ME } from "../types/index";
 import axios from "axios";
 
