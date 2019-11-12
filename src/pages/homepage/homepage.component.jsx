@@ -6,14 +6,12 @@ import Footer from "../../component/footer/Footer.components";
 
 import "./homepage.styles.scss";
 
-const Homepage = () => {
-  return (
-    <main>
-      <Hero />
-      <Testimony />
-      <Footer />
-    </main>
-  );
-};
+const Homepage = () => (
+  <main>
+    <Hero />
+    <Testimony />
+    <Footer />
+  </main>
+);
 
 export default Homepage;
