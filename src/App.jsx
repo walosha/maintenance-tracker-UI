@@ -11,8 +11,8 @@ import Request from "./pages/request/Request.component";
 import MyAccount from "./pages/myaccount/MyAccount.component";
 import Error404 from "./pages/Error404/Error404.component";
 
-const App = ({ user }) => {
-  console.log(user);
+const App = ({ user, auth }) => {
+  console.log(user, auth);
   return (
     <>
       <Header />
@@ -21,16 +21,12 @@ const App = ({ user }) => {
         <Route
           exact
           path="/signin"
-          render={() =>
-            Object.keys(user).length ? <Redirect to="/" /> : <SignIn />
-          }
+          render={() => (auth ? <Redirect to="/" /> : <SignIn />)}
         ></Route>
         <Route
           exact
           path="/signup"
-          render={() =>
-            Object.keys(user).length ? <Redirect to="/" /> : <SignUp />
-          }
+          render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
         ></Route>
         <Route exact path="/requests/" component={Requests}></Route>
         <Route exact path="/requests/:requestId" component={Request}></Route>
@@ -40,6 +36,6 @@ const App = ({ user }) => {
     </>
   );
 };
-const mapStateToProps = ({ data: { user } }) => ({ user });
+const mapStateToProps = ({ data: { user, auth } }) => ({ user, auth });
 
 export default connect(mapStateToProps)(App);

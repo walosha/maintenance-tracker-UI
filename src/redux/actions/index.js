@@ -14,7 +14,7 @@ export const signup = value => async dispatch => {
 export const signin = value => async dispatch => {
   const res = await maintenancetrackerapp.post("/api/v1/users/signin", value);
   window.localStorage.setItem("jwt", res.data.token);
-
+  console.log(res);
   dispatch({
     type: SIGN_IN,
     payload: res.data.data.user

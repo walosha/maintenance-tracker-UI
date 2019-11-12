@@ -2,18 +2,20 @@ import { combineReducers } from "redux";
 import { SIGN_IN, SIGN_UP, SIGN_OUT, GET_ME } from "../types/index";
 
 const INITIAL_STATE = {
-  user: {}
+  user: {},
+  auth: false
 };
 const AuthReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_UP:
-      return { ...state, user: action.payload };
     case SIGN_IN:
-      return { ...state, user: action.payload };
     case SIGN_OUT:
-      return { ...state, user: action.payload };
     case GET_ME:
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: action.payload,
+        auth: Boolean(Object.keys(action.payload).length)
+      };
     default:
       return state;
   }
