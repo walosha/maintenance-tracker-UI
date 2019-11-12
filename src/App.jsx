@@ -10,32 +10,44 @@ import Requests from "./pages/requests/Requests.component";
 import Request from "./pages/request/Request.component";
 import MyAccount from "./pages/myaccount/MyAccount.component";
 import Error404 from "./pages/Error404/Error404.component";
+import News from "./pages/news/News.page";
 
-const App = ({ user, auth }) => {
-  console.log(user, auth);
-  return (
-    <>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Homepage}></Route>
-        <Route
-          exact
-          path="/signin"
-          render={() => (auth ? <Redirect to="/" /> : <SignIn />)}
-        ></Route>
-        <Route
-          exact
-          path="/signup"
-          render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
-        ></Route>
-        <Route exact path="/requests/" component={Requests}></Route>
-        <Route exact path="/requests/:requestId" component={Request}></Route>
-        <Route exact path="/:username" component={MyAccount}></Route>
-        <Route path="/" component={Error404}></Route>
-      </Switch>
-    </>
-  );
-};
-const mapStateToProps = ({ data: { user, auth } }) => ({ user, auth });
+const App = ({ auth }) => (
+  <>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={Homepage}></Route>
+      <Route
+        exact
+        path="/signin"
+        render={() => (auth ? <Redirect to="/" /> : <SignIn />)}
+      ></Route>
+      <Route
+        exact
+        path="/signup"
+        render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
+      ></Route>
+      <Route
+        exact
+        path="/requests/"
+        render={() => (auth ? <Requests /> : <Redirect to="/" />)}
+      ></Route>
+      <Route exact path="/news/" component={News}></Route>
+      <Route
+        exact
+        path="/requests/:requestId"
+        render={() => (auth ? <Request /> : <Redirect to="/" />)}
+      ></Route>
+      <Route
+        exact
+        path="/:username"
+        render={() => (auth ? <MyAccount /> : <Redirect to="/" />)}
+      ></Route>
+      <Route path="/" component={Error404}></Route>
+    </Switch>
+  </>
+);
+
+const mapStateToProps = ({ data: { auth } }) => ({ auth });
 
 export default connect(mapStateToProps)(App);

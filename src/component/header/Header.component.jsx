@@ -24,12 +24,12 @@ const Header = ({ user, signout, auth }) => {
         {auth ? (
           <NavItem to="/requests">Request</NavItem>
         ) : (
-          <NavItem to="/signin">Contact Us</NavItem>
+          <NavItem to="/">Contact Us</NavItem>
         )}
         {auth ? (
-          <NavItem to="/news"> News </NavItem>
+          <NavItem to="/news"> In-Mail </NavItem>
         ) : (
-          <NavItem to="/signin">Team</NavItem>
+          <NavItem to="/news">News</NavItem>
         )}
         {auth ? (
           <NavItem onClick={signout} to="/">

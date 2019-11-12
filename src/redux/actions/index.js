@@ -23,7 +23,7 @@ export const signin = value => async dispatch => {
 
 export const signout = () => async dispatch => {
   await maintenancetrackerapp.get("/users/signout");
-  localStorage.setItem("jwt", "");
+  localStorage.removeItem("jwt");
   dispatch({
     type: SIGN_OUT,
     payload: {}
