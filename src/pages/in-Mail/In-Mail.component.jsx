@@ -1,12 +1,11 @@
 import React from "react";
 import requireAuth from "../../hoc/requireAuth";
 
-const Requests = ({ hello }) => {
+const InMail = () => {
   return (
     <div>
-      <h1>This is a Request Component</h1>
+      <h1>INBOX MESSAGES </h1>
     </div>
   );
 };
-
-export default requireAuth(Requests);
+export default requireAuth(InMail);

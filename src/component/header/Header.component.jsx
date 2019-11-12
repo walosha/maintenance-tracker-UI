@@ -27,7 +27,7 @@ const Header = ({ user, signout, auth }) => {
           <NavItem to="/">Contact Us</NavItem>
         )}
         {auth ? (
-          <NavItem to="/news"> In-Mail </NavItem>
+          <NavItem to="/In-mail"> In-Mail </NavItem>
         ) : (
           <NavItem to="/news">News</NavItem>
         )}

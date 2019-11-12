@@ -11,6 +11,7 @@ import Request from "./pages/request/Request.component";
 import MyAccount from "./pages/myaccount/MyAccount.component";
 import Error404 from "./pages/Error404/Error404.component";
 import News from "./pages/news/News.page";
+import InMail from "./pages/in-Mail/In-Mail.component";
 
 const App = ({ auth }) => (
   <>
@@ -27,22 +28,11 @@ const App = ({ auth }) => (
         path="/signup"
         render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
       ></Route>
-      <Route
-        exact
-        path="/requests/"
-        render={() => (auth ? <Requests /> : <Redirect to="/" />)}
-      ></Route>
-      <Route exact path="/news/" component={News}></Route>
-      <Route
-        exact
-        path="/requests/:requestId"
-        render={() => (auth ? <Request /> : <Redirect to="/" />)}
-      ></Route>
-      <Route
-        exact
-        path="/:username"
-        render={() => (auth ? <MyAccount /> : <Redirect to="/" />)}
-      ></Route>
+      <Route exact path="/requests/" component={Requests}></Route>
+      <Route exact path="/news" component={News}></Route>
+      <Route exact path="/In-mail" component={InMail}></Route>
+      <Route exact path="/requests/:requestId" component={Request}></Route>
+      <Route exact path="/:username" component={MyAccount}></Route>
       <Route path="/" component={Error404}></Route>
     </Switch>
   </>

@@ -1,9 +1,11 @@
 import React from "react";
 
 const News = () => {
-  return <div>
+  return (
+    <div>
       <h1>READ NEWS HERE</h1>
-  </div>;
+    </div>
+  );
 };
 
 export default News;
