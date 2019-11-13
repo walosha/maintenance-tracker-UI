@@ -1,11 +1,10 @@
-import { combineReducers } from "redux";
 import { SIGN_IN, SIGN_UP, SIGN_OUT, GET_ME } from "../types/index";
 
 const INITIAL_STATE = {
   user: {},
   auth: false
 };
-const AuthReducer = (state = INITIAL_STATE, action) => {
+const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_UP:
     case SIGN_IN:
@@ -21,4 +20,4 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export const rootReducer = combineReducers({ data: AuthReducer });
+export default userReducer;

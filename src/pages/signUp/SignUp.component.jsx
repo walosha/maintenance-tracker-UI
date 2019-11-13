@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
-import { signup } from "../../redux/actions";
+import { signup } from "../../redux/actions/user.action";
 
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
 

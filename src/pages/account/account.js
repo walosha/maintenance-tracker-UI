@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import MyAccount from "../myaccount/MyAccount.component";
 import Requests from "../requests/Requests.component";
-import Request from "../request/Request.component";
+import Request from "../request-form/request-form.component";
 
 const Account = ({ match }) => (
   <Switch>
