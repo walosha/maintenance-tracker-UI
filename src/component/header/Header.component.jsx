@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import {
   HeaderStyles,
   LogoBox,
@@ -13,7 +14,8 @@ import logo from "../../assets/logo.png";
 
 import "./header.styles.js";
 
-const Header = ({ user, signout, auth }) => {
+const Header = ({ user, signout, auth, location }) => {
+  console.log(location.pathname);
   return (
     <HeaderStyles>
       <LogoBox to="/">
@@ -22,7 +24,9 @@ const Header = ({ user, signout, auth }) => {
       <NavBar>
         {" "}
         {auth ? (
-          <NavItem to="/requests">Request</NavItem>
+          <NavItem to={`/${user.name.split(" ").join("")}/requests`}>
+            Requests
+          </NavItem>
         ) : (
           <NavItem to="/">Contact Us</NavItem>
         )}
@@ -38,14 +42,18 @@ const Header = ({ user, signout, auth }) => {
         ) : (
           <NavItem to="/signin">Sign in</NavItem>
         )}
-        {auth ? (
-          <NavItem to={`/${user.name}`}>
+        {auth ? null : <StyledSignUp to="/signup">Sign Up</StyledSignUp>}
+        {auth && location.pathname === "/" ? (
+          <NavItem
+            to={user.name
+              .split(" ")
+              .join("")
+              .toLowerCase()}
+          >
             {" "}
-            WELCOME {user.name.toUpperCase().split(" ")[0]}{" "}
+            WELCOME {user.name.toUpperCase().split(" ")[0]}
           </NavItem>
-        ) : (
-          <StyledSignUp to="/signup">Sign Up</StyledSignUp>
-        )}
+        ) : null}
       </NavBar>
     </HeaderStyles>
   );
@@ -56,4 +64,4 @@ const mapStateToProps = ({ data: { user, auth } }) => ({ user, auth });
 export default connect(
   mapStateToProps,
   { signout }
-)(Header);
+)(withRouter(Header));

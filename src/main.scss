@@ -100,3 +100,10 @@ html {
   width: calc((100% - 14rem) / 3);
   float: left;
 }
+
+a {
+  text-decoration: none !important;
+  &:active {
+    color: #000;
+  }
+}

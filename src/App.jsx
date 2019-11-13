@@ -6,12 +6,11 @@ import Header from "./component/header/Header.component";
 import Homepage from "./pages/homepage/homepage.component";
 import SignUp from "./pages/signUp/SignUp.component";
 import SignIn from "./pages/signIn/SignIn.component";
-import Requests from "./pages/requests/Requests.component";
-import Request from "./pages/request/Request.component";
-import MyAccount from "./pages/myaccount/MyAccount.component";
+import Account from "./pages/account/account";
 import Error404 from "./pages/Error404/Error404.component";
 import News from "./pages/news/News.page";
 import InMail from "./pages/in-Mail/In-Mail.component";
+import Footer from "./component/footer/Footer.components";
 
 const App = ({ auth }) => (
   <>
@@ -28,13 +27,12 @@ const App = ({ auth }) => (
         path="/signup"
         render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
       ></Route>
-      <Route exact path="/requests/" component={Requests}></Route>
       <Route exact path="/news" component={News}></Route>
       <Route exact path="/In-mail" component={InMail}></Route>
-      <Route exact path="/requests/:requestId" component={Request}></Route>
-      <Route exact path="/:username" component={MyAccount}></Route>
+      <Route path="/:username" component={Account}></Route>
       <Route path="/" component={Error404}></Route>
     </Switch>
+    <Footer />
   </>
 );
 
