@@ -1,7 +1,6 @@
 import maintenancetrackerapp from "../../api/maintenancetrackerapp";
 import { reduxActionFactory } from "../../utils/reduxActionFactory";
 import { SIGN_IN, SIGN_UP, SIGN_OUT, GET_ME } from "../types/index";
-import axios from "axios";
 
 export const signup = value =>
   reduxActionFactory(value)(SIGN_UP, "post", "signup");
@@ -19,9 +18,6 @@ export const signout = () => async dispatch => {
 };
 
 export const getMe = () => async dispatch => {
-  axios.defaults.headers.common[
-    "Authorization"
-  ] = `Bearer ${localStorage.getItem("jwt")}`;
   const res = await maintenancetrackerapp.get("/users/Me");
   dispatch({
     type: GET_ME,
