@@ -49,13 +49,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/walosha/ecommerce.git"
+    "url": "git+https://github.com/walosha/maintenance-tracker-UI.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/walosha/ecommerce/issues"
+    "url": "https://github.com/walosha/maintenance-tracker-UI/issues"
   },
-  "homepage": "https://github.com/walosha/ecommerce#readme"
+  "homepage": "https://github.com/walosha/maintenance-tracker-UI#readme"
 }

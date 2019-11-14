@@ -1,35 +1,94 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const boxshadow = css`
-  box-shadow: 0.2rem 0.3rem 1rem #00000040;
-`;
-
 export const RequestSection = styled.section`
-  padding: 3rem 4rem;
-  height: 70vh;
+  padding: 7rem 15rem;
 `;
-export const HeaderBox = styled.section`
+export const HeaderBox = styled.div`
   padding: 0.5rem 1.2rem;
   width: 70%;
   margin: 0 auto;
   text-align: center;
-  ${boxshadow}
+  margin-bottom: 5rem;
 `;
 
 export const CreateRequestButton = styled(Link)`
-  ${boxshadow}
-  padding: 1.2rem 2.3rem;
+  box-shadow: ${props => props.theme.boxShadow};
+  padding: 0.5rem 1.3rem;
   background-color: #ba68c8;
   color: #fff;
   text-transform: capitalize;
   font-size: 1.7rem;
-  font-weight: 700;
+  font-weight: 500;
   display: inline-block;
   border-radius: 0.3rem;
   transition: all 0.3s;
   &:hover {
     background-color: #fff;
-    color: #ba68c8;
+    color: ${props => props.theme.color};
   }
+`;
+
+export const RequestPaper = styled.div`
+  box-shadow: ${props => props.theme.boxShadow};
+  width: 80%;
+  margin: 0 auto;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  text-align: center;
+  transform: skewX(1deg);
+  transition: all 0.3s;
+  transform: translatey(0);
+  border-radius: 5px;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &:hover {
+    transform: translateY(-0.5rem);
+  }
+`;
+
+export const RequestTitle = styled.h4`
+  font-size: 1.4rem;
+  padding: 2rem 3rem;
+  color: ${props => props.theme.color};
+  display: inline-block;
+  text-transform: uppercase;
+  width: 25%;
+  margin-right: 0.7rem;
+  border-right: 0.2rem solid ${props => props.theme.background1};
+`;
+export const RequestDescribtion = styled.p`
+  font-size: 0.7rem;
+  color: ${props => props.theme.background2};
+  display: inline-block;
+  text-transform: uppercase;
+  width: 55%;
+  padding: 2rem 3rem;
+`;
+
+export const RequestDetail = styled.div`
+  padding: 1rem 1rem;
+  display: inline-block;
+  text-align: center;
+  width: 15%;
+  border-left: 0.2rem solid ${props => props.theme.background1};
+`;
+export const RequestStatus = styled.div`
+  padding: 1rem 1rem;
+  font-weight: 500;
+  border-radius: 3rem;
+  text-align: center;
+  background-color: ${props => props.theme.color};
+  color: #fff;
+`;
+
+export const StatusText = styled.p`
+  text-transform: capitalize;
+  font-weight: 700;
+`;
+
+export const RequestDateFormat = styled.div`
+  padding: 1.5rem 1rem;
 `;

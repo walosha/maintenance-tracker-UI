@@ -15,7 +15,8 @@ import "./main.scss";
 const theme = {
   color: "#ba68c8",
   background1: "#eeeeee",
-  background2: "#757575"
+  background2: "#757575",
+  boxShadow: "0.5rem 0.7rem 2rem 3px hsla(229, 13%, 48%, 0.16)"
 };
 ReactDOM.render(
   <Router history={history}>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const HeaderStyles = styled.header`
   padding: 4rem 2rem;
   position: relative;
-  box-shadow: 0.4rem 0.5rem 2rem rgba(0, 0, 0, 0.342);
+  box-shadow: ${props => props.theme.boxShadow};
   &:hover {
     box-shadow: 0.4rem 0.3rem 1rem rgba(0, 0, 0, 0.376);
   }

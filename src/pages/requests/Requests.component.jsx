@@ -4,8 +4,15 @@ import requireAuth from "../../hoc/requireAuth";
 import { getRequest } from "../../redux/actions/request.action";
 import {
   RequestSection,
+  StatusText,
+  RequestDateFormat,
   CreateRequestButton,
-  HeaderBox
+  HeaderBox,
+  RequestDescribtion,
+  RequestTitle,
+  RequestDetail,
+  RequestPaper,
+  RequestStatus
 } from "./requests.styles";
 
 const Requests = ({ match, getRequest, request }) => {
@@ -25,11 +32,25 @@ const Requests = ({ match, getRequest, request }) => {
           </CreateRequestButton>
         </HeaderBox>
         {request
-          ? request.map(req => (
-              <React.Fragment key={req._id}>
-                <h1>{req.title}</h1>
-                <p>{req.request}</p>
-              </React.Fragment>
+          ? request.map(singleReq => (
+              <RequestPaper key={singleReq._id}>
+                <RequestTitle>{singleReq.title}</RequestTitle>
+                <RequestDescribtion>{singleReq.request}</RequestDescribtion>
+                <RequestDetail>
+                  {" "}
+                  <RequestStatus>
+                    <StatusText>{singleReq.status}</StatusText>
+                  </RequestStatus>{" "}
+                  <RequestDateFormat>
+                    <StatusText>
+                      {String(new Date(singleReq.createdAt))
+                        .split(" ")
+                        .splice(1, 3)
+                        .join("-")}
+                    </StatusText>
+                  </RequestDateFormat>
+                </RequestDetail>
+              </RequestPaper>
             ))
           : null}
       </RequestSection>
