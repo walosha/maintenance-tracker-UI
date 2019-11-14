@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import requireAuth from "../../hoc/requireAuth";
-import { getRequest } from "../../redux/actions/request.action";
+import { getRequest, deleteRequest } from "../../redux/actions/request.action";
+import { ReactComponent as Bin } from "../../assets/bin.svg";
 import {
   RequestSection,
   StatusText,
@@ -15,13 +16,13 @@ import {
   RequestStatus
 } from "./requests.styles";
 
-const Requests = ({ match, getRequest, request }) => {
+const Requests = ({ match, getRequest, request, deleteRequest }) => {
   useEffect(renderRequest, []);
 
   function renderRequest() {
     getRequest();
   }
-
+  console.log(request);
   return (
     <>
       <RequestSection>
@@ -34,6 +35,10 @@ const Requests = ({ match, getRequest, request }) => {
         {request
           ? request.map(singleReq => (
               <RequestPaper key={singleReq._id}>
+                <Bin
+                  onClick={() => deleteRequest(request)}
+                  style={{ fill: "purple" }}
+                />
                 <RequestTitle>{singleReq.title}</RequestTitle>
                 <RequestDescribtion>{singleReq.request}</RequestDescribtion>
                 <RequestDetail>
@@ -62,5 +67,5 @@ const mapStateToProps = state => state.requests;
 
 export default connect(
   mapStateToProps,
-  { getRequest }
+  { getRequest, deleteRequest }
 )(requireAuth(Requests));

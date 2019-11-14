@@ -40,12 +40,14 @@ export const RequestPaper = styled.div`
   transition: all 0.3s;
   transform: translatey(0);
   border-radius: 5px;
+  transform: scale(1);
 
   &:not(:last-child) {
     margin-bottom: 2rem;
   }
   &:hover {
     transform: translateY(-0.5rem);
+    transform: scale(1.08);
   }
 `;
 

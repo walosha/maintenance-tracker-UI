@@ -12,31 +12,34 @@ import Error404 from "./pages/Error404/Error404.component";
 import News from "./pages/news/News.page";
 import InMail from "./pages/in-Mail/In-Mail.component";
 
-axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
-  "jwt"
-)}`;
-const App = ({ auth }) => (
-  <>
-    <Header />
-    <Switch>
-      <Route exact path="/" component={Homepage}></Route>
-      <Route
-        exact
-        path="/signin"
-        render={() => (auth ? <Redirect to="/" /> : <SignIn />)}
-      ></Route>
-      <Route
-        exact
-        path="/signup"
-        render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
-      ></Route>
-      <Route exact path="/news" component={News}></Route>
-      <Route exact path="/In-mail" component={InMail}></Route>
-      <Route path="/:username" component={Account}></Route>
-      <Route path="/" component={Error404}></Route>
-    </Switch>
-  </>
-);
+console.log(localStorage.getItem("jwt"));
+const App = ({ auth }) => {
+  axios.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${localStorage.getItem("jwt")}`;
+  return (
+    <>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Homepage}></Route>
+        <Route
+          exact
+          path="/signin"
+          render={() => (auth ? <Redirect to="/" /> : <SignIn />)}
+        ></Route>
+        <Route
+          exact
+          path="/signup"
+          render={() => (auth ? <Redirect to="/" /> : <SignUp />)}
+        ></Route>
+        <Route exact path="/news" component={News}></Route>
+        <Route exact path="/In-mail" component={InMail}></Route>
+        <Route path="/:username" component={Account}></Route>
+        <Route path="/" component={Error404}></Route>
+      </Switch>
+    </>
+  );
+};
 
 const mapStateToProps = ({ data: { auth } }) => ({ auth });
 
