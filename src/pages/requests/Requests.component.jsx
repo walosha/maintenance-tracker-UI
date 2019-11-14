@@ -22,7 +22,7 @@ const Requests = ({ match, getRequest, request, deleteRequest }) => {
   function renderRequest() {
     getRequest();
   }
-  console.log(request);
+
   return (
     <>
       <RequestSection>
@@ -33,7 +33,7 @@ const Requests = ({ match, getRequest, request, deleteRequest }) => {
           </CreateRequestButton>
         </HeaderBox>
         {request
-          ? request.map(singleReq => (
+          ? Object.values(request).map(singleReq => (
               <RequestPaper key={singleReq._id}>
                 <Bin
                   onClick={() => deleteRequest(request)}

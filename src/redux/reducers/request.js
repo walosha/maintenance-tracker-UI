@@ -1,7 +1,7 @@
 import { POST_REQUEST, GET_REQUEST, DELETE_REQUEST } from "../types";
 
 const INITIAL_STATE = {
-  request: []
+  request: {}
 };
 
 const requestReducer = (state = INITIAL_STATE, action) => {
