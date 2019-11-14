@@ -1,6 +1,6 @@
 import maintenancetrackerapp from "../../api/maintenancetrackerapp";
 import history from "../../history";
-import { POST_REQUEST } from "../types";
+import { POST_REQUEST, GET_REQUEST } from "../types";
 
 export const postRequest = values => async (dispatch, getState) => {
   const res = await maintenancetrackerapp.post("/requests", values);
@@ -12,6 +12,6 @@ export const postRequest = values => async (dispatch, getState) => {
 
 export const getRequest = values => async dispatch => {
   const res = await maintenancetrackerapp.get("/requests");
-
-  dispatch({ type: POST_REQUEST, payload: res.data.data.data });
+  console.log(res.data.data.data);
+  dispatch({ type: GET_REQUEST, payload: res.data.data.data });
 };

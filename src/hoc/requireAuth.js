@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 function requireAuth(ChildComponent) {
   class EhancedComponent extends Component {
     componentDidMount() {
-      this.renderComponent(this.props.auth);
+      this.renderComponent(this.props.data.auth);
     }
     componentDidUpdate() {
-      this.renderComponent(this.props.auth);
+      this.renderComponent(this.props.data.auth);
     }
 
     renderComponent(auth) {
@@ -21,9 +21,7 @@ function requireAuth(ChildComponent) {
     }
   }
 
-  function mapStateToProps({ data: { auth } }) {
-    return { auth };
-  }
+  const mapStateToProps = ({ requests, data }) => ({ requests, data });
 
   return connect(mapStateToProps)(EhancedComponent);
 }

@@ -8,7 +8,7 @@ import {
   HeaderBox
 } from "./requests.styles";
 
-const Requests = ({ match, getRequest }) => {
+const Requests = ({ match, getRequest, request }) => {
   useEffect(renderRequest, []);
 
   function renderRequest() {
@@ -24,12 +24,22 @@ const Requests = ({ match, getRequest }) => {
             Create Request
           </CreateRequestButton>
         </HeaderBox>
+        {request
+          ? request.map(req => (
+              <React.Fragment key={req._id}>
+                <h1>{req.title}</h1>
+                <p>{req.request}</p>
+              </React.Fragment>
+            ))
+          : null}
       </RequestSection>
     </>
   );
 };
 
+const mapStateToProps = state => state.requests;
+
 export default connect(
-  null,
+  mapStateToProps,
   { getRequest }
 )(requireAuth(Requests));
