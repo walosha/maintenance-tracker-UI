@@ -89,15 +89,25 @@ html {
   }
 }
 
-[class^="col-"]:not(:last-child) {
+[class^="col-1-of-3"]:not(:last-child) {
   margin-right: 6rem;
 }
+
 .col-1-of-2 {
   width: calc((100% - 7rem) / 2);
   float: left;
 }
 .col-1-of-3 {
   width: calc((100% - 14rem) / 3);
+  float: left;
+}
+
+.col-1-of-5 {
+  width: calc((100% - 1rem) / 5);
+  float: left;
+}
+.col-3-of-5 {
+  width: calc(3 * (100% - 1rem) / 5);
   float: left;
 }
 

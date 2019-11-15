@@ -57,16 +57,14 @@ export const RequestTitle = styled.h4`
   color: ${props => props.theme.color};
   display: inline-block;
   text-transform: uppercase;
-  width: 25%;
   margin-right: 0.7rem;
   border-right: 0.2rem solid ${props => props.theme.background1};
 `;
 export const RequestDescribtion = styled.p`
-  font-size: 0.7rem;
+  font-size: 1.2rem;
   color: ${props => props.theme.background2};
   display: inline-block;
   text-transform: uppercase;
-  width: 55%;
   padding: 2rem 3rem;
 `;
 
@@ -74,7 +72,6 @@ export const RequestDetail = styled.div`
   padding: 1rem 1rem;
   display: inline-block;
   text-align: center;
-  width: 15%;
   border-left: 0.2rem solid ${props => props.theme.background1};
 `;
 export const RequestStatus = styled.div`
