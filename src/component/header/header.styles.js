@@ -7,6 +7,8 @@ export const HeaderStyles = styled.header`
   box-shadow: ${props => props.theme.boxShadow};
   &:hover {
     box-shadow: 0.4rem 0.3rem 1rem rgba(0, 0, 0, 0.376);
+    background-color: #ba68c8;
+    color: #fff;
   }
 `;
 
@@ -37,6 +39,7 @@ export const NavItem = styled(Link)`
 
   &:hover {
     border: 0.2rem solid #ba68c8;
+    background-color: #fff;
     color: #757575;
   }
 `;
