@@ -75,19 +75,34 @@ export const RequestDetail = styled.div`
   border-left: 0.2rem solid ${props => props.theme.background1};
 `;
 export const RequestStatus = styled.div`
-  padding: 1rem 1rem;
   font-weight: 500;
   border-radius: 3rem;
   text-align: center;
-  background-color: ${props => props.theme.color};
-  color: #fff;
 `;
 
 export const StatusText = styled.p`
+padding: 1rem 1rem;
   text-transform: capitalize;
   font-weight: 700;
+  color: #fff;
+  background-color: ${props => props.theme.color};
 `;
 
 export const RequestDateFormat = styled.div`
   padding: 1.5rem 1rem;
+`;
+
+export const Button = styled.button`
+  outline: none;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  border-radius: 3px;
+`;
+
+export const BtnSucess = styled(Button)`
+  background-color: #f0f;
+`;
+export const BtnDanger = styled(Button)`
+  background-color: red;
 `;

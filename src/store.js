@@ -12,9 +12,9 @@ const persistConfig = {
   storage
 };
 
-axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
-  "jwt"
-)}`;
+axios.defaults.headers.common["Authorization"] = `Bearer ${
+  localStorage.getItem("jwt")
+}`;
 const middlewares = [thunk];
 
 if (process.env.NODE_ENV === "development") {

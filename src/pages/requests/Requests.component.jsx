@@ -8,6 +8,8 @@ import { ReactComponent as Pencil } from "../../assets/pencil.svg";
 import {
   RequestSection,
   StatusText,
+  BtnSucess,
+  BtnDanger,
   RequestDateFormat,
   CreateRequestButton,
   HeaderBox,
@@ -18,9 +20,10 @@ import {
   RequestStatus
 } from "./requests.styles";
 
-const Requests = ({ match, getRequests, request, deleteRequest }) => {
+const Requests = props => {
+  const { match, getRequests, request, deleteRequest, data } = props;
   useEffect(renderRequest, request);
-
+  console.log();
   function renderRequest() {
     getRequests();
   }
@@ -29,7 +32,7 @@ const Requests = ({ match, getRequests, request, deleteRequest }) => {
     <>
       <RequestSection>
         <HeaderBox>
-          <h2 className="heading-primary">List of Request </h2>{" "}
+          <h2 className="heading-primary">List of Requests </h2>{" "}
           <CreateRequestButton to={`${match.url}/createrequest`}>
             Create Request
           </CreateRequestButton>
@@ -57,7 +60,16 @@ const Requests = ({ match, getRequests, request, deleteRequest }) => {
                     <RequestDetail>
                       {" "}
                       <RequestStatus>
-                        <StatusText>{singleReq.status}</StatusText>
+                        {data.user.role === "admin" ? (
+                          <>
+                            <BtnSucess >
+                              Accept
+                            </BtnSucess>{" "}
+                            <BtnDanger>Reject</BtnDanger>
+                          </>
+                        ) : (
+                          <StatusText>{singleReq.status}</StatusText>
+                        )}
                       </RequestStatus>{" "}
                       <RequestDateFormat>
                         <StatusText>
@@ -80,7 +92,6 @@ const Requests = ({ match, getRequests, request, deleteRequest }) => {
 
 const mapStateToProps = state => state.requests;
 
-export default connect(
-  mapStateToProps,
-  { getRequests, deleteRequest }
-)(requireAuth(Requests));
+export default connect(mapStateToProps, { getRequests, deleteRequest })(
+  requireAuth(Requests)
+);

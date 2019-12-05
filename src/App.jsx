@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
 
 import Header from "./component/header/Header.component";
 import Homepage from "./pages/homepage/homepage.component";
@@ -12,11 +11,7 @@ import Error404 from "./pages/Error404/Error404.component";
 import News from "./pages/news/News.page";
 import InMail from "./pages/in-Mail/In-Mail.component";
 
-console.log(localStorage.getItem("jwt"));
 const App = ({ auth }) => {
-  axios.defaults.headers.common[
-    "Authorization"
-  ] = `Bearer ${localStorage.getItem("jwt")}`;
   return (
     <>
       <Header />

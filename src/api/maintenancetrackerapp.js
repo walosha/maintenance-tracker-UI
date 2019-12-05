@@ -1,4 +1,5 @@
 import axios from "axios";
+import getAccessToken from "./../utils/getAccessToken";
 let maintenancetrackerapp;
 
 if (process.env.NODE_ENV === "development") {
@@ -10,5 +11,6 @@ if (process.env.NODE_ENV === "development") {
     baseURL: "https://maintenancetrackerapp.herokuapp.com/api/v1"
   });
 }
+getAccessToken(maintenancetrackerapp);
 
 export default maintenancetrackerapp;
