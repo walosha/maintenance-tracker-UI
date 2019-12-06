@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { Field, Form } from "formik";
-import background from "../../assets/background.png";
 
 export const SignInStyles = styled.div`
-  background-image: url(${background});
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -45,4 +43,5 @@ export const StyledField = styled(Field)`
 export const StyledForm = styled(Form)`
   padding: 3rem 5rem;
   border-radius: 0.3rem;
+  text-align: center;
 `;

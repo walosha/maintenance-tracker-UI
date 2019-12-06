@@ -19,7 +19,7 @@ const AlertAnimation = keyframes`
 `;
 
 export const StyledAlertBox = styled.div`
-  background-color: #ba68c8;
+  background-color: ${props => props.bgColor || "#f0f"};
   position: absolute;
   left: 40%;
   transform: translateY(-100rem);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
-import { Button, StyledField, StyledForm } from "../signUp/SignUp.styles";
+import { Button, StyledField, StyledForm } from "../signIn/SignIn.styles";
 import requireAuth from "../../hoc/requireAuth";
 import { RequestFormSection } from "./request-form.styles";
 import { postRequest } from "../../redux/actions/request.action";
@@ -58,7 +58,4 @@ const ReqestForm = ({ postRequest }) => {
   );
 };
 
-export default connect(
-  null,
-  { postRequest }
-)(requireAuth(ReqestForm));
+export default connect(null, { postRequest })(requireAuth(ReqestForm));

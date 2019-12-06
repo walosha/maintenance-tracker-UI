@@ -1,61 +1,75 @@
 import React, { useEffect } from "react";
 import { Formik, ErrorMessage } from "formik";
+import * as yup from "yup";
 import { connect } from "react-redux";
-import { Button, StyledField, StyledForm } from "../signUp/SignUp.styles";
+import { Button, StyledField, StyledForm } from "../signIn/SignIn.styles";
 import requireAuth from "../../hoc/requireAuth";
 import { RequestFormSection } from "../request-form/request-form.styles";
-import { postRequest, getRequest } from "../../redux/actions/request.action";
+import { updateRequest, getRequest } from "../../redux/actions/request.action";
+import Loader from "../../component/loader/withLoader";
 
-const EditRequest = ({ match, newRequest, getRequest }) => {
+const EditRequest = ({
+  match,
+  history,
+  newRequest,
+  getRequest,
+  updateRequest
+}) => {
   useEffect(getRequestOnMount, []);
-  console.log(newRequest);
+  newRequest = Object.values(newRequest)[0];
   function getRequestOnMount() {
     getRequest(match.params.requestId);
   }
-  return (
+  return !newRequest ? (
+    <div>LOADING....... !</div>
+  ) : (
     <RequestFormSection>
-      <h2 className="heading-primary u-center-text">Edit Reqest </h2>
+      <h2 className="heading-primary u-center-text"> Edit Reqest </h2>
       <Formik
         initialValues={{
-          title: "",
-          request: ""
+          title: newRequest.title,
+          request: newRequest.request
         }}
-        validate={values => {
-          const errors = {};
-          if (!values.title) {
-            errors.title = "Title is required";
-          } else if (!values.request) {
-            errors.request = "Please write a request!";
-          }
-          return errors;
-        }}
+        validationSchema={yup.object({
+          title: yup
+            .string()
+            .min(4)
+            .required("Title is required !"),
+          request: yup
+            .string()
+            .min(5)
+            .required("Title is required !")
+        })}
         onSubmit={values => {
-          postRequest(values);
+          updateRequest({ ...values, _id: newRequest._id });
+          history.push("/");
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, handleChange, onSubmit, values }) => (
           <StyledForm>
             <StyledField
               type="text"
               name="title"
-              value={newRequest.title}
-              placeholder="Request Title"
-              autocompleted="off"
+              value={values.title}
+              autoCompleted="off"
+              onChange={handleChange}
             />
-            <ErrorMessage name="title" component="div" />
-
-            <StyledField
-              value={newRequest.request}
+            <ErrorMessage name="title" />
+            <textarea
+              value={values.request}
               rows="15"
-              columns="55"
+              columns="5"
               name="request"
-              placeholder="Enter Request"
+              onChange={handleChange}
             />
             <ErrorMessage name="request" component="div" />
-
-            <Button type="submit" disabled={isSubmitting}>
-              Submit
-            </Button>
+            {isSubmitting ? (
+              <Loader />
+            ) : (
+              <Button onClick={onSubmit} type="submit" disabled={isSubmitting}>
+                Submit
+              </Button>
+            )}
           </StyledForm>
         )}
       </Formik>
@@ -64,7 +78,6 @@ const EditRequest = ({ match, newRequest, getRequest }) => {
 };
 const mapStateToProps = ({ requests: { newRequest } }) => ({ newRequest });
 
-export default connect(
-  mapStateToProps,
-  { postRequest, getRequest }
-)(requireAuth(EditRequest));
+export default connect(mapStateToProps, { updateRequest, getRequest })(
+  requireAuth(EditRequest)
+);

@@ -2,8 +2,13 @@ import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../../redux/actions/user.action";
-
-import { SignInStyles, Button, StyledField, StyledForm } from "./SignUp.styles";
+import Loader from "../../component/loader/withLoader";
+import {
+  SignInStyles,
+  Button,
+  StyledField,
+  StyledForm
+} from "../signIn/SignIn.styles";
 
 const SignUp = ({ signup }) => {
   return (
@@ -64,9 +69,13 @@ const SignUp = ({ signup }) => {
               placeholder="password"
             />
             <ErrorMessage name="passwordConfirm" component="div" />
-            <Button type="submit" disabled={isSubmitting}>
-              Register
-            </Button>
+            {isSubmitting ? (
+              <Loader />
+            ) : (
+              <Button type="submit" disabled={isSubmitting}>
+                Register
+              </Button>
+            )}
           </StyledForm>
         )}
       </Formik>
@@ -75,7 +84,4 @@ const SignUp = ({ signup }) => {
 };
 
 const mapStateToProps = ({ data: { user } }) => ({ user });
-export default connect(
-  mapStateToProps,
-  { signup }
-)(SignUp);
+export default connect(mapStateToProps, { signup })(SignUp);
