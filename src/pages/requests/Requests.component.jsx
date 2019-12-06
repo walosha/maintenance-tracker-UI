@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import requireAuth from "../../hoc/requireAuth";
-import { getRequests, deleteRequest } from "../../redux/actions/request.action";
+import {
+  getRequests,
+  deleteRequest,
+  updateRequest
+} from "../../redux/actions/request.action";
 import { ReactComponent as Bin } from "../../assets/bin.svg";
 import { ReactComponent as Pencil } from "../../assets/pencil.svg";
 import {
@@ -21,11 +25,23 @@ import {
 } from "./requests.styles";
 
 const Requests = props => {
-  const { match, getRequests, request, deleteRequest, data } = props;
+  const {
+    match,
+    getRequests,
+    request,
+    deleteRequest,
+    data,
+    updateRequest
+  } = props;
   useEffect(renderRequest, request);
-  console.log();
+
   function renderRequest() {
     getRequests();
+  }
+
+  function confirmRequest(req, res) {
+    const updatedRequest = { ...req, status: res };
+    updateRequest(updatedRequest);
   }
 
   return (
@@ -60,13 +76,26 @@ const Requests = props => {
                     <RequestDetail>
                       {" "}
                       <RequestStatus>
-                        {data.user.role === "admin" ? (
+                        {data.user.role === "admin" &&
+                        singleReq.status === "pending" ? (
                           <>
-                            <BtnSucess >
+                            <BtnSucess
+                              onClick={() =>
+                                confirmRequest(singleReq, "accepted")
+                              }
+                            >
                               Accept
                             </BtnSucess>{" "}
-                            <BtnDanger>Reject</BtnDanger>
+                            <BtnDanger
+                              onClick={() =>
+                                confirmRequest(singleReq, "cancelled")
+                              }
+                            >
+                              Reject
+                            </BtnDanger>
                           </>
+                        ) : singleReq.status === "cancelled" ? (
+                          <BtnDanger>{singleReq.status}</BtnDanger>
                         ) : (
                           <StatusText>{singleReq.status}</StatusText>
                         )}
@@ -92,6 +121,8 @@ const Requests = props => {
 
 const mapStateToProps = state => state.requests;
 
-export default connect(mapStateToProps, { getRequests, deleteRequest })(
-  requireAuth(Requests)
-);
+export default connect(mapStateToProps, {
+  getRequests,
+  deleteRequest,
+  updateRequest
+})(requireAuth(Requests));

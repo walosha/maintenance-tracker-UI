@@ -2,6 +2,7 @@ import {
   POST_REQUEST,
   GET_REQUESTS,
   GET_REQUEST,
+  UPDATE_REQUEST,
   DELETE_REQUEST
 } from "../types";
 
@@ -16,6 +17,11 @@ const requestReducer = (state = INITIAL_STATE, action) => {
       return state;
     case GET_REQUESTS:
       return { ...state, request: action.payload };
+    case UPDATE_REQUEST:
+      return {
+        ...state,
+        request: { ...state.request, [action.payload._id]: action.payload }
+      };
     case DELETE_REQUEST:
       return { ...state, request: action.payload };
     case GET_REQUEST:

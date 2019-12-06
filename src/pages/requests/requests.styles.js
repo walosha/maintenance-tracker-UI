@@ -81,7 +81,7 @@ export const RequestStatus = styled.div`
 `;
 
 export const StatusText = styled.p`
-padding: 1rem 1rem;
+  padding: 1rem 1rem;
   text-transform: capitalize;
   font-weight: 700;
   color: #fff;
@@ -98,6 +98,8 @@ export const Button = styled.button`
   padding: 0.8rem 1.5rem;
   color: #fff;
   border-radius: 3px;
+  box-shadow: ${props => props.theme.boxShadow};
+  cursor: pointer;
 `;
 
 export const BtnSucess = styled(Button)`

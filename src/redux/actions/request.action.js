@@ -5,7 +5,8 @@ import {
   POST_REQUEST,
   GET_REQUESTS,
   GET_REQUEST,
-  DELETE_REQUEST
+  DELETE_REQUEST,
+  UPDATE_REQUEST
 } from "../types";
 
 export const postRequest = values => async (dispatch, getState) => {
@@ -14,6 +15,12 @@ export const postRequest = values => async (dispatch, getState) => {
   // programmatically navigate to the Request Route Page
   history.push(`/${getState().data.user.name}/requests`);
   dispatch({ type: POST_REQUEST, payload: res.data.data.data });
+};
+
+export const updateRequest = values => async (dispatch, getState) => {
+  const res = await maintenancetrackerapp.patch(`/requests/${values._id}`, values);
+
+  dispatch({ type: UPDATE_REQUEST, payload: res.data.data.data });
 };
 
 export const getRequests = () => async dispatch => {
