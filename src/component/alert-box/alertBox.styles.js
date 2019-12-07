@@ -3,23 +3,23 @@ import styled, { keyframes } from "styled-components";
 const AlertAnimation = keyframes`
 0%{
   opacity :0;
-  transform:translateY(-90px)
+  transform:translateY(-100px)
 }
 
 50%{
   opacity :1;
-  transform:translateY(0px)
+  transform:translateY(30px)
 }
 
 100%{
   opacity :0;
-  transform:translateY(-90px)
-
+  transform:translateY(-100px)
+}
 
 `;
 
 export const StyledAlertBox = styled.div`
-  background-color: ${props => props.bgColor || "red"};
+  background-color: ${props => props.bgColor || "#f0f"};
   position: absolute;
   left: 40%;
   transform: translateY(-100rem);

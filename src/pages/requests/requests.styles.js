@@ -108,9 +108,3 @@ export const BtnSucess = styled(Button)`
 export const BtnDanger = styled(Button)`
   background-color: red;
 `;
-export const BtnRight = styled(BtnSucess)`
-  background-color: #f0f;
-  position: absolute;
-  right: 30rem;
-  margin-top: 3rem;
-`;
