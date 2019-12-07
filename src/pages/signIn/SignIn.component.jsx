@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, ErrorMessage } from "formik";
 import { connect } from "react-redux";
 import { signin } from "../../redux/actions/user.action";
 import { SignInStyles, Button, StyledField, StyledForm } from "./SignIn.styles";
-import AlertBox from "../../component/alert-box/AlertBox.component";
+import withAlertBox from "../../component/alert-box/AlertBox.component";
 import Loader from "../../component/loader/withLoader";
 import maintenancetrackerapp from "./../../api/maintenancetrackerapp";
 
 const SignIn = ({ signin }) => {
-  const [message, setMesage] = useState("");
   return (
     <SignInStyles>
-      {message ? <AlertBox message={message} /> : null}
-      <h2 className="heading-primary u-center-text">SIGN IN</h2>
+      ]<h2 className="heading-primary u-center-text">SIGN IN</h2>
       <Formik
         initialValues={{ email: "", password: "" }}
         validate={values => {
@@ -33,7 +31,7 @@ const SignIn = ({ signin }) => {
                 "Authorization"
               ] = `Bearer ${localStorage.getItem("jwt")}`;
             })
-            .catch(error => setMesage(error.message));
+            .catch(error => console.log(error.message));
         }}
       >
         {({ isSubmitting }) => (
@@ -58,4 +56,6 @@ const SignIn = ({ signin }) => {
   );
 };
 
-export default connect(null, { signin })(SignIn);
+export default connect(null, { signin })(
+  withAlertBox(SignIn, maintenancetrackerapp)
+);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {
@@ -9,18 +9,12 @@ import {
   NavItem,
   StyledSignUp
 } from "./header.styles";
-import { signout, getMe } from "../../redux/actions/user.action";
+import { signout } from "../../redux/actions/user.action";
 import logo from "../../assets/logo.png";
 
 import "./header.styles.js";
 
-const Header = ({ user, signout, getMe, auth, location }) => {
-  useEffect(getUser, []);
-
-  function getUser() {
-    getMe();
-  }
-
+const Header = ({ user, signout, auth, location }) => {
   return (
     <HeaderStyles>
       <LogoBox to="/">
@@ -66,7 +60,4 @@ const Header = ({ user, signout, getMe, auth, location }) => {
 
 const mapStateToProps = ({ data: { user, auth } }) => ({ user, auth });
 
-export default connect(
-  mapStateToProps,
-  { signout, getMe }
-)(withRouter(Header));
+export default connect(mapStateToProps, { signout })(withRouter(Header));
