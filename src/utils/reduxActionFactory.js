@@ -10,7 +10,6 @@ export const reduxActionFactory = value => (
     value
   );
   window.localStorage.setItem("jwt", res.data.token);
-
   dispatch({
     type: type,
     payload: res.data.data.user

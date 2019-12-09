@@ -1,5 +1,11 @@
-import styled from "styled-components";
-import { Field, Form } from "formik";
+import styled, { css } from "styled-components";
+import { Field, Form, ErrorMessage } from "formik";
+
+const Error = css`
+  font-size: 3rem;
+  color: red;
+  font-weight: 700;
+`;
 
 export const SignInStyles = styled.div`
   height: 100vh;
@@ -9,6 +15,13 @@ export const SignInStyles = styled.div`
 `;
 export const SignInForm = styled.div`
   padding: 2rem 3rem;
+`;
+
+export const StyledErrorMessage = styled(ErrorMessage)`
+  ${Error}
+`;
+export const ErrorDisplay = styled.div`
+  ${Error}
 `;
 
 export const Button = styled.button`

@@ -8,10 +8,12 @@ import Loader from "../../component/loader/withLoader";
 import maintenancetrackerapp from "./../../api/maintenancetrackerapp";
 
 const SignIn = ({ signin }) => {
-  const [message, setMesage] = useState("");
+  const [error, setError] = useState(false);
+  const [ErrorMsg, setErrorMsg] = useState("");
+
   return (
     <SignInStyles>
-      {message ? <AlertBox message={message} /> : null}
+      {error ? <AlertBox>{ErrorMsg} </AlertBox> : null}
       <h2 className="heading-primary u-center-text">SIGN IN</h2>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -27,13 +29,18 @@ const SignIn = ({ signin }) => {
           return errors;
         }}
         onSubmit={values => {
+          setError(false);
           signin(values)
             .then(message => {
               maintenancetrackerapp.defaults.headers.common[
                 "Authorization"
               ] = `Bearer ${localStorage.getItem("jwt")}`;
+              setError(false);
             })
-            .catch(error => setMesage(error.message));
+            .catch(error => {
+              setErrorMsg(error.response.data.message);
+              setError(true);
+            });
         }}
       >
         {({ isSubmitting }) => (
@@ -42,12 +49,14 @@ const SignIn = ({ signin }) => {
               type="email"
               name="email"
               placeholder="Your email address"
+              autoComplete="off"
             />
             <ErrorMessage name="email" component="div" />
             <StyledField
               type="password"
               name="password"
               placeholder="***********"
+              autoComplete="off"
             />
             <ErrorMessage name="password" component="div" />
             {isSubmitting ? <Loader /> : <Button type="submit">Submit</Button>}

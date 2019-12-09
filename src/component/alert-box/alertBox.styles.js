@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const AlertAnimation = keyframes`
 0%{
   opacity :0;
-  transform:translateY(-100px)
+  transform:translateY(-70px)
 }
 
 50%{
@@ -13,7 +13,7 @@ const AlertAnimation = keyframes`
 
 100%{
   opacity :0;
-  transform:translateY(-100px)
+  transform:translateY(-70px)
 }
 
 `;

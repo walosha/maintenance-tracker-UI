@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
-import { Formik, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import * as yup from "yup";
 import { connect } from "react-redux";
-import { Button, StyledField, StyledForm } from "../signIn/SignIn.styles";
+import {
+  Button,
+  StyledField,
+  StyledForm,
+  StyledErrorMessage
+} from "../signIn/SignIn.styles";
 import requireAuth from "../../hoc/requireAuth";
 import { RequestFormSection } from "../request-form/request-form.styles";
 import { updateRequest, getRequest } from "../../redux/actions/request.action";
@@ -15,13 +20,17 @@ const EditRequest = ({
   getRequest,
   updateRequest
 }) => {
+  console.log(newRequest);
   useEffect(getRequestOnMount, []);
-  newRequest = Object.values(newRequest)[0];
+
+  newRequest = Object.values(newRequest || {})[0];
+
   function getRequestOnMount() {
     getRequest(match.params.requestId);
   }
+
   return !newRequest ? (
-    <div>LOADING....... !</div>
+    <Loader />
   ) : (
     <RequestFormSection>
       <h2 className="heading-primary u-center-text"> Edit Reqest </h2>
@@ -38,7 +47,7 @@ const EditRequest = ({
           request: yup
             .string()
             .min(5)
-            .required("Title is required !")
+            .required("Request is required !")
         })}
         onSubmit={values => {
           updateRequest({ ...values, _id: newRequest._id });
@@ -51,10 +60,11 @@ const EditRequest = ({
               type="text"
               name="title"
               value={values.title}
-              autoCompleted="off"
+              autoComplete="off"
               onChange={handleChange}
             />
-            <ErrorMessage name="title" />
+
+            <StyledErrorMessage name="title" />
             <textarea
               value={values.request}
               rows="15"
@@ -62,7 +72,7 @@ const EditRequest = ({
               name="request"
               onChange={handleChange}
             />
-            <ErrorMessage name="request" component="div" />
+            <StyledErrorMessage name="request" component="div" />
             {isSubmitting ? (
               <Loader />
             ) : (

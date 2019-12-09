@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledAlertBox, StyledAlertBoxText } from "./alertBox.styles";
 
-const AlertBox = ({ message, bgColor }) => (
+const AlertBox = ({ bgColor, children }) => (
   <StyledAlertBox>
-    <StyledAlertBoxText bgColor={bgColor}>{message}</StyledAlertBoxText>
+    <StyledAlertBoxText bgColor={bgColor}>{children}</StyledAlertBoxText>
   </StyledAlertBox>
 );
 
