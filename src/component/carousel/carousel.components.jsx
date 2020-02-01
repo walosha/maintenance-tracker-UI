@@ -27,16 +27,16 @@ const Carousel = () => {
     <LazyLoad height={200} offset={200}>
       <div className="hero__carousel">
         <Slider className="slide-images" {...settings}>
-          <LazyLoad>
+          <LazyLoad height={600} offset={600}>
             <img className="slide-images" src={Image1} alt="hero carousel" />
           </LazyLoad>
-          <LazyLoad>
+          <LazyLoad height={600} offset={600}>
             <img className="slide-images" src={Image2} alt="hero carousel" />
           </LazyLoad>
-          <LazyLoad>
+          <LazyLoad height={600} offset={600}>
             <img className="slide-images" src={Image3} alt="hero carousel" />
           </LazyLoad>
-          <LazyLoad>
+          <LazyLoad height={600} offset={200}>
             <img className="slide-images" src={Image4} alt="hero carousel" />
           </LazyLoad>
         </Slider>
