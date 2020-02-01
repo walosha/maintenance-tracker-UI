@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -13,7 +13,7 @@ import InMail from "./pages/in-Mail/In-Mail.component";
 
 const App = ({ auth }) => {
   return (
-    <>
+    <Fragment>
       <Header />
       <Switch>
         <Route exact path="/" component={Homepage}></Route>
@@ -32,7 +32,7 @@ const App = ({ auth }) => {
         <Route path="/:username" component={Account}></Route>
         <Route path="/" component={Error404}></Route>
       </Switch>
-    </>
+    </Fragment>
   );
 };
 

@@ -9,6 +9,7 @@
     "react": "^16.8.6",
     "react-cookie": "^4.0.1",
     "react-dom": "^16.8.6",
+    "react-lazy-load": "^3.0.13",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-slick": "^0.25.2",
@@ -22,7 +23,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
-    "react-scripts": "3.0.0"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

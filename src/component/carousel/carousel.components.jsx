@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import LazyLoad from "react-lazy-load";
 
 import Image1 from "../../assets/hotel-1.jpg";
 import Image2 from "../../assets/hotel-2.jpg";
@@ -23,22 +24,24 @@ const Carousel = () => {
   };
 
   return (
-    <div className="hero__carousel">
-      <Slider className="slide-images" {...settings}>
-        <div>
-          <img className="slide-images" src={Image1} alt="" />
-        </div>
-        <div>
-          <img className="slide-images" src={Image2} alt="" />
-        </div>
-        <div>
-          <img className="slide-images" src={Image3} alt="" />
-        </div>
-        <div>
-          <img className="slide-images" src={Image4} alt="" />
-        </div>
-      </Slider>
-    </div>
+    <LazyLoad height={200} offset={200}>
+      <div className="hero__carousel">
+        <Slider className="slide-images" {...settings}>
+          <LazyLoad>
+            <img className="slide-images" src={Image1} alt="hero carousel" />
+          </LazyLoad>
+          <LazyLoad>
+            <img className="slide-images" src={Image2} alt="hero carousel" />
+          </LazyLoad>
+          <LazyLoad>
+            <img className="slide-images" src={Image3} alt="hero carousel" />
+          </LazyLoad>
+          <LazyLoad>
+            <img className="slide-images" src={Image4} alt="hero carousel" />
+          </LazyLoad>
+        </Slider>
+      </div>
+    </LazyLoad>
   );
 };
 

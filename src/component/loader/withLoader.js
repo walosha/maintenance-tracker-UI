@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import "./Loader.styles.scss";
 
 const Loader = () => (
-  <>
+  <Fragment>
     <div className="lds-roller">
       <div></div>
       <div></div>
@@ -14,7 +14,7 @@ const Loader = () => (
       <div></div>
       <div></div>
     </div>
-  </>
+  </Fragment>
 );
 
 export default Loader;
